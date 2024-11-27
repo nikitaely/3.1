@@ -19,11 +19,7 @@ function Footer({ todoCount, setFilter, clearCompleted }) {
   )
 }
 
-Footer.defaultProps = {
-  todoCount: 0,
-  setFilter: () => {},
-  clearCompleted: () => {},
-}
+
 
 Footer.propTypes = {
   todoCount: PropTypes.number,
