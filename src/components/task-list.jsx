@@ -5,12 +5,12 @@ import Task from './task'
 
 function TaskList({ todos, onDeleted, onToggleDone }) {
   const elements = todos.map((item) => {
-    const { id, label, done } = item
+    const { id, description, done } = item
 
     return (
       <Task
         key={id}
-        label={label}
+        description={description}
         done={done}
         onDeleted={() => onDeleted(id)}
         onToggleDone={() => onToggleDone(id)}

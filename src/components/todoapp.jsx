@@ -7,7 +7,7 @@ import './todoapp.css'
 export default class TodoApp extends Component {
   constructor(props) {
     super(props)
-
+    this.maxId = 1
     this.state = {
       todoData: [
         this.createItem('first'),
@@ -16,8 +16,6 @@ export default class TodoApp extends Component {
       ],
       filter: 'all',
     }
-
-    this.maxId = 1 // Инициализация переменной в конструкторе
   }
 
   addTask = (label) => {
@@ -35,6 +33,13 @@ export default class TodoApp extends Component {
   onToggleDone = (id) => {
     this.setState(({ todoData }) => {
       const idx = todoData.findIndex((el) => el.id === id)
+
+      if (idx === -1) {
+        // If no task with the specified id is found, return without updating the state
+        // console.log(id)
+        return { todoData }
+      }
+
       const oldItem = todoData[idx]
       const newItem = { ...oldItem, done: !oldItem.done }
 
@@ -72,6 +77,7 @@ export default class TodoApp extends Component {
 
   createItem(description) {
     this.maxId += 1
+    console.log(this.maxId)
     return {
       description,
       done: false,
@@ -81,7 +87,7 @@ export default class TodoApp extends Component {
   }
 
   render() {
-    const { todoData } = this.state // Деструктуризация `this.state`
+    const { todoData } = this.state
     const doneCount = todoData.filter((el) => el.done).length
     const todoCount = todoData.length - doneCount
 
