@@ -34,12 +34,6 @@ export default class TodoApp extends Component {
     this.setState(({ todoData }) => {
       const idx = todoData.findIndex((el) => el.id === id)
 
-      if (idx === -1) {
-        // If no task with the specified id is found, return without updating the state
-        // console.log(id)
-        return { todoData }
-      }
-
       const oldItem = todoData[idx]
       const newItem = { ...oldItem, done: !oldItem.done }
 
