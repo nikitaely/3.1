@@ -76,5 +76,11 @@
     "lint-staged": "^15.2.10",
     "prettier": "^3.4.1",
     "typescript": "^4.9.5"
+  },
+  "engines" : { 
+    "npm" : "8.1.0",
+    "node" : "16.13.0"
   }
 }
+
+
